@@ -17,14 +17,7 @@ class GamesController < ApplicationController
   private
   def valid_grid_word?(attemp, letters)
     new_grid = letters.join.downcase.chars
-    attemp.chars.all? do |letter|
-      if new_grid.include?(letter)
-        new_grid.delete_at(new_grid.index(letter))
-        true
-      else
-        false
-      end
-    end
+    attemp.chars.all? { |letter| new_grid.include?(letter) }
   end
 
   def valid_english_word?(attempt)
